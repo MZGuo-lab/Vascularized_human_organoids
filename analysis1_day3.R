@@ -111,4 +111,10 @@ obj = FindClusters(obj, graph.name=graph.name, resolution = 0.8, algorithm=4, me
 DimPlot(obj, reduction = "umap", pt.size = 0.001,
         group.by = c("seurat_clusters","DataID"), label=T, label.size = 2) + NoLegend()
 
+obj$Celltype = "Def. endoderm"
+obj$Celltype[which(obj$seurat_clusters %in% c(2,3,7))] = "Meso-endoderm progenitor"
+obj$Celltype[which(obj$seurat_clusters %in% c(4,13))] = "Lateral plate mesoderm"
+obj$Celltype[which(obj$seurat_clusters %in% c(8))] = "Cardiac mesendoderm"
+obj$Celltype[which(obj$seurat_clusters %in% c(11))] = "Low quality"
+
 saveRDS(obj, file="Day3_all.rds")
