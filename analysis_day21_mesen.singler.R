@@ -29,5 +29,5 @@ all(rownames(query@meta.data) == rownames(pred))
 query@meta.data$pruned.labels = pred[rownames(query@meta.data), "pruned.labels"]
 table(query@meta.data$pruned.labels, query@meta.data$DataID)
 
-save(query, file="Day21_mesen.singleR_pred.rds")
+saveRDS(query, file="Day21_mesen.singleR_pred.rds")
 
